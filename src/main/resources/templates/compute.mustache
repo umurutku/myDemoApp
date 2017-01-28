@@ -1,11 +1,18 @@
-<title>My application deployed automatically</title>
-  <h1>Hello, World!</h1>
-    Result is {{result}}
+<title>Find common integers</title>
+  <h3>This application finds and lists the common integers between 3 arrays</h3>
+    Result is {{result}}<br>
 
-
+    Please enter integers <b>seperated with enter</b> to the boxes below 
   <form action="compute" method="post">
-        <textarea name="input1" rows="6" cols="30"></textarea><br>
-        <textarea name="input2" rows="6" cols="30"></textarea><br>
-        <textarea name="input3" rows="6" cols="30"></textarea><br>
-        <input type="submit">
+        <p>Array1  Array2  Array3</p>
+        <textarea name="input1" rows="10" cols="5"></textarea>
+        <textarea name="input2" rows="10" cols="5"></textarea>
+        <textarea name="input3" rows="10" cols="5"></textarea><br>
+        <input type="submit" value="Find common elements">
   </form>
+
+  <script type="text/javascript">
+    function formValidate() {
+
+    }
+  </script>
