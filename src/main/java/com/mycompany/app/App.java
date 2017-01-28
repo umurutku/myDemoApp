@@ -19,7 +19,7 @@ public class App
 
         HashMap<Integer,Integer> map1 = new HashMap<>();
         HashMap<Integer,Integer> map2 = new HashMap<>();
-        List<Integer> commons= new ArrayList<>();
+        List<Integer> commons = new ArrayList<>();
 
         for(int element : array1)
             if(!map1.containsKey(element))
@@ -53,41 +53,44 @@ public class App
 
         get("/", (req, res) -> "Hello, World");
 
-
         post("/compute", (req,res) -> {
+        	ArrayList<Integer> result;
 
+        	try {
+	            String input1 = req.queryParams("input1");
+	            java.util.Scanner scanner = new java.util.Scanner(input1);
+	            scanner.useDelimiter("[;\r\n]+");
+	            ArrayList<Integer> list1 = new ArrayList<>();
+	            while(scanner.hasNext()) {
+	                int value = Integer.parseInt(scanner.next().replaceAll("\\s",""));
+	                list1.add(value);
+	            }
+	            System.out.println(list1);
 
-            String input1 = req.queryParams("input1");
-            java.util.Scanner scanner = new java.util.Scanner(input1);
-            scanner.useDelimiter("[;\r\n]+");
-            ArrayList<Integer> list1 = new ArrayList<>();
-            while(scanner.hasNext()) {
-                int value = Integer.parseInt(scanner.next().replaceAll("\\s",""));
-                list1.add(value);
-            }
-            System.out.println(list1);
+	            String input2 = req.queryParams("input2");
+	            scanner = new java.util.Scanner(input2);
+	            scanner.useDelimiter("[;\r\n]+");
+	            ArrayList<Integer> list2 = new ArrayList<>();
+	            while(scanner.hasNext()) {
+	                int value = Integer.parseInt(scanner.next().replaceAll("\\s",""));
+	                list2.add(value);
+	            }
+	            System.out.println(list2);
 
-            String input2 = req.queryParams("input2");
-            scanner = new java.util.Scanner(input2);
-            scanner.useDelimiter("[;\r\n]+");
-            ArrayList<Integer> list2 = new ArrayList<>();
-            while(scanner.hasNext()) {
-                int value = Integer.parseInt(scanner.next().replaceAll("\\s",""));
-                list2.add(value);
-            }
-            System.out.println(list2);
+	            String input3 = req.queryParams("input3");
+	            scanner = new java.util.Scanner(input3);
+	            scanner.useDelimiter("[;\r\n]+");
+	            ArrayList<Integer> list3 = new ArrayList<>();
+	            while(scanner.hasNext()) {
+	                int value = Integer.parseInt(scanner.next().replaceAll("\\s",""));
+	                list3.add(value);
+	            }
+	            System.out.println(list3);
 
-            String input3 = req.queryParams("input3");
-            scanner = new java.util.Scanner(input3);
-            scanner.useDelimiter("[;\r\n]+");
-            ArrayList<Integer> list3 = new ArrayList<>();
-            while(scanner.hasNext()) {
-                int value = Integer.parseInt(scanner.next().replaceAll("\\s",""));
-                list3.add(value);
-            }
-            System.out.println(list3);
-
-            ArrayList<Integer> result = (ArrayList<Integer>) findCommonElements(list1, list2, list3);
+	            result = (ArrayList<Integer>) findCommonElements(list1, list2, list3);
+	        } catch(NumberFormatException e) {
+	        	result = null;
+	        }
 
             Map map = new HashMap();
             map.put("result", result);
